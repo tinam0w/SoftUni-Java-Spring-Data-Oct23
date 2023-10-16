@@ -1,0 +1,72 @@
+Spring Data
+Car Repair Service
+Link for Car Repair Service Exam in Judge
+Car Repair Service offers a seamless car service experience at the convenience of a tap. With our highly skilled
+technicians, manufacturer recommended procedures and the promise of genuine spare parts we are your best bet.
+To tasks a better experience to its customers, a mechanic will look at your car's condition and check parts for wear
+and tear, like brakes, oil, filters and engine belt. The Car Repair Service owner has turned to SoftUni for help. Now a
+small team led by you must take on this task.
+1. Functionality Overview
+The application should be able to easily import hard-formatted data and support functionalities for also exporting
+the imported data. The application is called – Car Repair Service
+2.Project Skeleton Overview
+You will be given a skeleton, containing a certain architecture (MVC) with several classes, some of which are
+completely empty. The Skeleton will include the files with which you will seed the database.
+When submitting your project in Judge please make a .zip file only with src folder and pom.xml file.
+There are four problems in Judge:
+1. Database will test the structure of your database.
+2. Service will test the two methods areImported() and readClassFromFile() in every service class.
+3. Imports will test the whole logic of your importClass() method in every service class.
+4. Export will test the logic of the final export button which is in the ExportController.
+Please note that the automated system Judge may take up to 5 minutes to show results for each problem. We kindly
+ask you to be patient.
+3.Model Definition
+There are 4 main models that the Car Repair Service database application should contain in its functionality.
+Design them in the most appropriate way.
+Relationships
+Your partners gave you a little hint about the more complex relationships in the database, so that you can
+implement it correctly.
+One Task may have only one Mechanic, but one Mechanic may have many Tasks.
+One Task may need only one Part, but one Part may be used in many Tasks.
+One Task may have only one Car, but one Car can be in many Tasks
+Constraint:
+• Name the entities and their class members exactly in the format stated above.
+• All fields are NOT NULL unless explicitly stated to be nullable
+4.Data Import
+Use the provided files to populate the database with data. Import all the information from those files into the
+database.
+You are not allowed to modify the provided files.
+ANY INCORRECT data should be ignored and a message:
+"Invalid {part / mechanic / car / task}" should be printed.
+When the import is finished:
+"Successfully imported {part / mechanic / car / task} {name – price(to second digit after decimal point) / first name
+last name / carMake – carModel / price}" 
+JSON Import
+Your new colleagues have prepared some JSON data for you to import.
+Constraint:
+• If the mechanic with the same email already exists in the DB return "Invalid mechanic".
+XML Import
+Your new colleagues have prepared some XML data for you to import.
+Constraint:
+• If the car with the same plate number already exists in the DB return "Invalid car".
+Tasks (tasks.xml)
+Constraint:
+• If the given mechanic name doesn’t already exist in the DB return "Invalid task".
+• The provided part ids will always be valid.
+• Format the price to the second digit after the decimal point.
+5.Data Export
+Get ready to export the data you have imported in the previous task. Here you will have some complex database
+querying. Export the data in the formats specified below.
+© SoftUni – about.softuni.bg. Copyrighted document. Unauthorized copy, reproduction or use is not permitted.
+ Follow us: Page 14 of 14
+Export The Highest priced Tasks from the Data Base
+• Extract from the database, the car's make, car's model, mechanic's first name, mechanic's last name,
+task id, engine, task price (to second digit after decimal point) of the task.
+• Filter only coupe cars and order them by the price in descending order.
+• Return the information in this format:
+• "Car {carMake} {carModel} with {kilometers}km
+ -Mechanic: {firstName} {lastName} - task №{taskId}:
+ --Engine: {engine}
+ ---Price: {taskPrice}$
+. . ."
+
