@@ -2,10 +2,12 @@ package com.ltp.gradesubmission;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +17,13 @@ public class GradeController {
     List<Grade> studentGrades = new ArrayList<>();
 
     @GetMapping("/grades")
-    public String getGrades(Model model){
+    public String getGrades(Model model) {
         model.addAttribute("grades", studentGrades);
         return "grades";
     }
 
     @GetMapping("/")
-    public String getForm(Model model, @RequestParam(required = false) String id){
+    public String getForm(Model model, @RequestParam(required = false) String id) {
         int index = getGradeIndex(id);
 
         model.addAttribute("grade",
@@ -30,10 +32,12 @@ public class GradeController {
     }
 
     @PostMapping("/handleSubmit")
-    public String submitForm(Grade grade){
+    public String submitForm(@Valid Grade grade, BindingResult result) {
+        if (result.hasErrors()) return "form";
+
         int index = getGradeIndex(grade.getId());
 
-        if (index == Constants.NOT_FOUND){
+        if (index == Constants.NOT_FOUND) {
             studentGrades.add(grade);
         } else {
             studentGrades.set(index, grade);
@@ -42,7 +46,7 @@ public class GradeController {
         return "redirect:/grades";
     }
 
-    public Integer getGradeIndex(String id){
+    public Integer getGradeIndex(String id) {
         for (Grade studentGrade : studentGrades) {
             if (studentGrade.getId().equals(id)) return studentGrades.indexOf(studentGrade);
         }
