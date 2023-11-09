@@ -3,13 +3,21 @@ package com.ltp.globalsuperstore.service;
 import com.ltp.globalsuperstore.model.Item;
 import com.ltp.globalsuperstore.repository.StoreRepository;
 import com.ltp.globalsuperstore.utils.Constants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+@Service
 public class StoreService {
+    StoreRepository storeRepository;
 
-    StoreRepository storeRepository = new StoreRepository();
+    @Autowired
+    public StoreService(StoreRepository storeRepository) {
+        this.storeRepository = storeRepository;
+    }
 
     public String submitItem(Item item){
         int index = getIndexFromId(item.getId());
