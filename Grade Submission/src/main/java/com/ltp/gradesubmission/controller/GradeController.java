@@ -1,7 +1,8 @@
 package com.ltp.gradesubmission.controller;
 
-import com.ltp.gradesubmission.Grade;
+import com.ltp.gradesubmission.model.Grade;
 import com.ltp.gradesubmission.service.GradeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,8 +14,12 @@ import javax.validation.Valid;
 
 @Controller
 public class GradeController {
+    GradeService gradeService;
 
-    GradeService gradeService = new GradeService();
+    @Autowired
+    public GradeController(GradeService gradeService) {
+        this.gradeService = gradeService;
+    }
 
     @GetMapping("/grades")
     public String getGrades(Model model) {

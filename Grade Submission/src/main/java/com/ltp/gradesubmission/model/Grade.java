@@ -1,4 +1,4 @@
-package com.ltp.gradesubmission;
+package com.ltp.gradesubmission.model;
 
 import com.ltp.gradesubmission.validation.Score;
 
