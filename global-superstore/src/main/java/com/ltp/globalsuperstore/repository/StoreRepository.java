@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GlobalRepository {
+public class StoreRepository {
     private List<Item> items = new ArrayList<>();
 
     public Item getItemByIndex(int index) {
